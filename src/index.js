@@ -6,9 +6,12 @@ import routes from './routes';
 import configureStore from './configureStore'
 import rootSaga from './sagas';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import './assets/css/style.css';
 
-const store = configureStore({});
-store.runSaga(rootSaga);
+const store = configureStore( {} );
+store.runSaga( rootSaga );
 
 ReactDOM.render(
     <Provider store={store}>
