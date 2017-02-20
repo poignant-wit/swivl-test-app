@@ -1,19 +1,20 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { getUsers, getUsersSuccess } from '../ducks/users.js';
+import { call, put, takeEvery, select } from 'redux-saga/effects'
+import { getUsers, getUsersSuccess, getUsersError } from '../ducks/users.js';
 import * as API from '../API';
+import { getSinceFromLinkHeader } from '../utils/string';
 
 function* getUsersWatcher() {
     try {
-        const users = yield call( API.getUsers );
-        console.log( users );
-        yield put( getUsersSuccess( users.data ) );
+        const state = yield select();
+        const users = yield call( API.getUsers, { since: state.users.since } );
+        yield put( getUsersSuccess( users.data, getSinceFromLinkHeader( users.headers.link ) ) );
     } catch ( e ) {
-        console.log( e );
+        yield put( getUsersError() );
     }
 }
 
 function* usersSaga() {
-    yield take( getUsers.type, eventsPinnedWatcher );
+    yield takeEvery( getUsers, getUsersWatcher );
 }
 
 export default usersSaga;

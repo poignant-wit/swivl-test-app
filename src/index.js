@@ -4,8 +4,11 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import configureStore from './configureStore'
+import rootSaga from './sagas';
 
-const store = configureStore();
+
+const store = configureStore({});
+store.runSaga(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
