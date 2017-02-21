@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsers } from '../ducks/users';
 
+import UsersList from '../components/UsersList';
+
 class UsersPage extends Component {
 
-    componentWillMount() {
+    componentWillMount () {
         this.props.getUsers();
     }
 
-    render() {
+    render () {
         return (
-            <div>USERS</div>
+            <div>
+                <h2 className="text-center">Users list</h2>
+                <UsersList users={this.props.users}/>
+            </div>
         )
     }
 }

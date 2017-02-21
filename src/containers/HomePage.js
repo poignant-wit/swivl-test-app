@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class HomePage extends Component {
     render () {
@@ -13,8 +14,9 @@ class HomePage extends Component {
                                 <hr className="intro-divider"/>
                                 <ul className="list-inline intro-social-buttons">
                                     <li>
-                                        <a href="https://github.com/IronSummitMedia/startbootstrap" className="btn btn-success btn-lg"><span
-                                            className="network-name">Users list</span></a>
+                                        <Link  to="users" className="btn btn-success btn-lg">
+                                            Users list
+                                        </Link>
                                     </li>
                                     <li>
                                         <a href="https://github.com/IronSummitMedia/startbootstrap" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span

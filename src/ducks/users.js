@@ -9,20 +9,22 @@ export const getUser = createAction( 'users/USER_GET' );
 
 const initialState = {
     isFetching: false,
-    data: {},
-    ids: []
+    // data:       {},
+    // ids:        []
 };
 
 export default handleActions( {
-    [ getUsers ]: ( state, action ) => {
+    [ getUsers ]:        ( state, action ) => {
         return { ...state, isFetching: true };
     },
     [ getUsersSuccess ]: ( state, action ) => {
-        return { ...state,
+        const _ids = (state.ids) ? state.ids : [];
+        return {
+            ...state,
             isFetching: false,
-            data: R.merge( state.data, arrayToObject( action.payload.data ) ),
-            ids: [ ...state.ids, getIds( action.payload ) ],
-            since: action.payload.since
+            data:       R.merge( state.data, arrayToObject( action.payload.data ) ),
+            ids:        R.concat( _ids, getIds( action.payload.data ) ),
+            since:      action.payload.since
         };
     }
 }, initialState );
