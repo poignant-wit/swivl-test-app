@@ -14,7 +14,7 @@ class UsersPage extends Component {
         return (
             <div>
                 <h2 className="text-center">Users list</h2>
-                <UsersList users={this.props.users}/>
+                <UsersList users={this.props.users} onLoadItems={this.props.getUsers}/>
             </div>
         )
     }
