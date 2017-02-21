@@ -5,10 +5,13 @@ import HomePage from './containers/HomePage';
 import UsersPage from './containers/UsersPage';
 import UserPage from './containers/UserPage';
 
+/**
+ *
+ */
 export default (
     <Route path="/" component={AppPage}>
         <IndexRoute component={HomePage}/>
         <Route path="users" component={UsersPage}/>
-        <Route path="users/:id" component={UserPage}/>
+        <Route path="users/:username" component={UserPage}/>
     </Route>
 )

@@ -1,5 +1,5 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects'
-import { getUsers, getUsersSuccess, getUsersError } from '../ducks/users.js';
+import { call, put, takeLatest, select, fork } from 'redux-saga/effects'
+import { getUsers, getUsersSuccess, getUsersError, getUser, getUserSuccess, getUserError } from '../ducks/users.js';
 import * as API from '../API';
 import { getSinceFromLinkHeader } from '../utils/string';
 /**
@@ -23,4 +23,22 @@ function* usersSaga () {
     yield takeLatest( getUsers, getUsersWatcher );
 }
 
-export default usersSaga;
+function* getUserWatcher ( action ) {
+    try {
+        const user = yield call( API.getUser, action.payload );
+        yield put( getUserSuccess( user.data ) );
+    } catch ( e ) {
+        yield put( getUserError( e ) );
+    }
+}
+
+function* userSaga () {
+    yield takeLatest( getUser, getUserWatcher );
+}
+
+export default function* usersRootSaga () {
+    yield [
+        fork( usersSaga ),
+        fork( userSaga ),
+    ];
+};

@@ -1,11 +1,14 @@
-import R from 'ramda'; 
+import R from 'ramda';
 
+/**
+ *
+ */
 export const getSinceFromLinkHeader = R.pipe(
-    R.split(','),
+    R.split( ',' ),
     R.head,
-    R.split(';'),
+    R.split( ';' ),
     R.head,
-    R.split('='),
+    R.split( '=' ),
     R.last,
-    R.dropLast(1)
-)
+    R.dropLast( 1 )
+);

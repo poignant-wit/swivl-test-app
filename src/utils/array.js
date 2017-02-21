@@ -1,4 +1,7 @@
-import R from 'ramda'; 
+import R from 'ramda';
 
+/**
+ *
+ * @param prop
+ */
 export const arrayToObjectByProp = prop => R.pipe( R.indexBy( R.prop( prop ) ) );
-export const getIds = R.map(item => item.id);

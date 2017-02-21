@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+/**
+ *
+ */
 class AppPage extends Component {
     render() {
         return (
@@ -7,4 +10,7 @@ class AppPage extends Component {
         )
     }
 }
+/**
+ *
+ */
 export default AppPage;

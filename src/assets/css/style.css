@@ -167,3 +167,7 @@ p.copyright {
 .media-object{
     width: 100px;
 }
+
+.media-object-big{
+    width: 200px;
+}
