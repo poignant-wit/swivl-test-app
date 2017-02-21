@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import R from 'ramda';
-import { arrayToObject, getIds } from '../utils/array';
+import { arrayToObjectByProp } from '../utils/array';
 
 export const getUsers = createAction( 'users/USERS_GET' );
 export const getUsersSuccess = createAction( 'users/USERS_GET_SUCCESS', ( data, since ) => ( { data, since } ) );
@@ -19,11 +19,12 @@ export default handleActions( {
     },
     [ getUsersSuccess ]: ( state, action ) => {
         const _ids = (state.ids) ? state.ids : [];
+
         return {
             ...state,
             isFetching: false,
-            data:       R.merge( state.data, arrayToObject( action.payload.data ) ),
-            ids:        R.concat( _ids, getIds( action.payload.data ) ),
+            data:       R.merge( state.data, arrayToObjectByProp( 'id' )( action.payload.data ) ),
+            ids:        R.concat( _ids, R.pluck( 'id', action.payload.data ) ),
             since:      action.payload.since
         };
     }
