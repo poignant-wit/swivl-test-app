@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import Navbar from '../components/Navbar';
 
 /**
  *
  */
 class AppPage extends Component {
-    render() {
+    render () {
         return (
-            <div className="container">{this.props.children}</div>
+            <div className="container">
+                <Navbar/>
+                {this.props.children}
+                </div>
         )
     }
 }

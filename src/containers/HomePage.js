@@ -22,11 +22,11 @@ class HomePage extends Component {
                                         </Link>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/IronSummitMedia/startbootstrap" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span
+                                        <a href="https://github.com/poignant-wit/swivl-test-app" className="btn btn-default btn-lg"><i className="fa fa-github fa-fw"></i> <span
                                             className="network-name">Source code</span></a>
                                     </li>
                                     <li>
-                                        <a href="#" className="btn btn-default btn-lg"><i className="fa fa-linkedin fa-fw"></i> <span className="network-name">Linkedin</span></a>
+                                        <a href="https://linkedin.com/in/amandrychenko" className="btn btn-default btn-lg"><i className="fa fa-linkedin fa-fw"></i> <span className="network-name">Linkedin</span></a>
                                     </li>
                                 </ul>
                             </div>
