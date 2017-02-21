@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router';
 
 /**
- *  Carousel item date
  *
+ * @param user
  * @returns {XML}
  * @constructor
- * @param user
  */
 const UsersListItem = ( { user } ) => {
 
